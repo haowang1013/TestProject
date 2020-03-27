@@ -3,35 +3,36 @@
 #include "TestProjectGameModeBase.h"
 #include "HAL/IConsoleManager.h"
 
-PRAGMA_DISABLE_OPTIMIZATION
-
-static void CrashCommandHandler(const TArray<FString>& Args, UWorld* World)
+static void CrashCommandHandler0(const TArray<FString>& Args, UWorld* World)
 {
-	if (!Args.Num())
-	{
-		check(0);
-	}
-	
-	const auto Arg = Args[0];
-	if (Arg == TEXT("0"))
-	{
-		check(0);
-	}
-	else if (Arg == TEXT("1"))
-	{
-		int* ptr = nullptr;
-		*ptr = 100;
-	}
-	else if (Arg == TEXT("2"))
-	{
-		UE_LOG(LogTemp, Fatal, TEXT("I want to crash!"));
-	}
+	check(0);
 }
 
-static FAutoConsoleCommandWithWorldAndArgs CrashCommand(
-	TEXT("Crash"),
-	TEXT("Command for testing various test scenarios."),
-	FConsoleCommandWithWorldAndArgsDelegate::CreateStatic(&CrashCommandHandler)
+static void CrashCommandHandler1(const TArray<FString>& Args, UWorld* World)
+{
+	int* ptr = nullptr;
+	*ptr = 100;
+}
+
+static void CrashCommandHandler2(const TArray<FString>& Args, UWorld* World)
+{
+	UE_LOG(LogTemp, Fatal, TEXT("I want to crash!"));
+}
+
+static FAutoConsoleCommandWithWorldAndArgs CrashCommand0(
+	TEXT("Crash0"),
+	TEXT(""),
+	FConsoleCommandWithWorldAndArgsDelegate::CreateStatic(&CrashCommandHandler0)
 );
 
-PRAGMA_ENABLE_OPTIMIZATION
+static FAutoConsoleCommandWithWorldAndArgs CrashCommand1(
+	TEXT("Crash1"),
+	TEXT(""),
+	FConsoleCommandWithWorldAndArgsDelegate::CreateStatic(&CrashCommandHandler1)
+);
+
+static FAutoConsoleCommandWithWorldAndArgs CrashCommand2(
+	TEXT("Crash2"),
+	TEXT(""),
+	FConsoleCommandWithWorldAndArgsDelegate::CreateStatic(&CrashCommandHandler2)
+);
