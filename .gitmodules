@@ -1,0 +1,3 @@
+[submodule "Plugins/Crasheye"]
+	path = Plugins/Crasheye
+	url = git@github.com:directivegames/Crasheye.git
