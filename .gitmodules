@@ -1,3 +1,6 @@
 [submodule "Plugins/Crasheye"]
 	path = Plugins/Crasheye
 	url = git@github.com:directivegames/Crasheye.git
+[submodule "Plugins/Bugly"]
+	path = Plugins/Bugly
+	url = git@github.com:directivegames/Bugly.git
